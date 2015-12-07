@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <servicelocator prefix="/index.php?q=">
+        <item serviceClass="hu.vpmedia.net::HTTPConnection"
+              configClass="hu.vpmedia.net::HTTPConnectionVars">
+            <config>
+                <name>pingService</name>
+                <url>/ping</url>
+                <resultFormat>text</resultFormat>
+            </config>
+        </item>
+    </servicelocator>
+</config>

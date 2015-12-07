@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+/*
+ *=BEGIN LICENSE APACHE
+ *
+ * Copyright 2012, András Csizmadia <andras@vpmedia.eu>.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ *=END LICENSE APACHE
+ */
+-->
+<project name="hu.vpmedia.flash.ant.mvc-helper" default="build" basedir=".">
+    
+    <description>flash-gen</description>  
+    
+    <!-- ################################################################### -->
+    <!-- ######################### MASTER BUILD ############################ -->
+    <!-- ################################################################### -->
+    
+    <property name="template.dir" value="template"/> 
+    <property name="target.dir" value="actionscript/app"/> 
+                                          
+    <target name="build" if="className">
+        <copy overwrite="false" verbose="false" file="${template.dir}/flash/Controller.as" tofile="${target.dir}/flash/${className}Controller.as">
+            <filterset>
+                <filter token="TEMPLATE" value="${className}"/>
+            </filterset>
+        </copy>
+        <copy overwrite="false" verbose="false" file="template/flash/View.as" tofile="${target.dir}/flashj/${className}View.as">
+            <filterset>
+                <filter token="TEMPLATE" value="${className}"/>
+            </filterset>
+        </copy>  
+        <copy overwrite="false" verbose="false" file="template/flash/Mediator.as" tofile="${target.dir}/flash/${className}Mediator.as">
+            <filterset>
+                <filter token="TEMPLATE" value="${className}"/>
+            </filterset>
+        </copy>
+    </target>
+
+</project>
